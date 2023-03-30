@@ -64,3 +64,16 @@ exports.profileUpdate = asyncHandler(async (req, res) => {
     throw new Error("Update Failed")
   }
 })
+
+
+// Profile Details
+exports.profileDetails = asyncHandler(async (req, res) => {
+  const email = res.locals.user.email;
+  const user =await UsersModel.findOne({ email })
+  if (user) {
+    res.status(200).json({ status: "success", data: user });
+  } else {
+    throw new Error("User Details Not Found!")
+  }
+
+})
