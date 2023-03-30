@@ -22,7 +22,7 @@ exports.registration = asyncHandler(async (req, res) => {
       name: user.firstName,
       email: user.email,
       picture: user.photo,
-      token: generateToken(user.email),
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -43,10 +43,24 @@ exports.login= asyncHandler(async (req, res) => {
       lastName: user.lastName,
       email: user.email,
       photo: user.photo,
-      token: generateToken(user.email),
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("Invalid Email or Password");
   }
 });
+
+
+// Profile Updates
+exports.profileUpdate = asyncHandler(async (req, res) => {
+  const email = res.locals.user.email;
+  const reqBody = req.body;
+  const user = await UsersModel.updateOne({ email: email }, reqBody);
+  if (user) {
+     res.status(200).json({ status: "success", data: user });
+  }
+  else {
+    throw new Error("Update Failed")
+  }
+})
