@@ -1,0 +1,33 @@
+.sidebar{
+    background: #0B0C28;
+    color: #fff;
+    min-height: 100vh;
+    width: 200px;
+    transition: all 0.5s;
+}
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+    font-size: 15px;
+}
+.link:hover{
+    /* background:lightskyblue; */
+    /* color: #f10606; */
+    transition: all 0.5s;
+}
+.active{
+    background: rgba(91, 93, 95, 0.418);
+    /* color: rgb(29, 175, 107); */
+}
+
+.link_text, a{
+    font-size: 18px;
+    text-decoration: none;
+    /* color:rgb(241, 202, 202); */
+}
+.icon{
+    color: #01D293;
+}

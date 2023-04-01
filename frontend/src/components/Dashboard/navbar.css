@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+.nav{
+    background-color: #0B0C28;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.nav-title{
+    display: flex;
+}
+.nav-title li{
+    list-style: none;
+    padding-right: 20px;
+    font-size: larger;
+    color: white;
+}
+.nav-menu{
+    display: flex;
+    
+}
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    padding-right: 20px;
+}
