@@ -6,7 +6,9 @@ const Dashboard = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Fragment>
-      <Navbar toggle={toggle} isOpen={isOpen} />
+    
+        <Navbar toggle={toggle} isOpen={isOpen} />
+    
     </Fragment>
   );
 };

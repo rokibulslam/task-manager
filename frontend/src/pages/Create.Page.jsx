@@ -2,7 +2,7 @@ import React from 'react';
 
 const CreatePage = () => {
     return (
-        <div>
+        <div className='t text-right'>
             Create Page
         </div>
     );

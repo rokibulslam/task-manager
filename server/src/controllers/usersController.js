@@ -12,7 +12,8 @@ exports.registration = asyncHandler(async (req, res) => {
   }
   const userExist = await UsersModel.findOne({ email });
   if (userExist) {
-    throw new Error("User already exist");
+    throw new Error("User already exist")
+    
   }
   const user = await UsersModel.create(req.body);
   

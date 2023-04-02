@@ -15,6 +15,8 @@ const cors = require("cors");
 // Database Lib Import
 const mongoose = require("mongoose");
 const router = require("./src/routes/api");
+const { notFound, errorHandler } = require("./src/middleware/errorHandler");
+
 
 // Security Middleware Implement
 app.use(cors());
@@ -36,14 +38,14 @@ app.use(limiter);
 // Mongo DB Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/taskmanager");
 
+app.get("/", (req, res) => {
+  res.json("Hello World");
+});
 // Routing Implement
 app.use("/api/v1", router);
 
+app.use(notFound)
+app.use(errorHandler)
 
-app.get("/", (req,res)=>{res.json("Hello World")})
-// Undefined Route Implement
-app.use("*", (req, res) => {
-  res.status(404).json({ status: "failed", data: "Route Not Found" });
-});
 
 module.exports = app;

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi'
 import { Link, Outlet } from 'react-router-dom';
 import LazyLoader from './LazyLoader';
@@ -15,13 +15,13 @@ const Navbar = ({toggle, isOpen}) => {
             </li>
           </ul>
           <ul className="nav-menu">
-            <Link to="">Login</Link>
+            <Link to="/login">Login</Link>
             <Link to="">Profile Pic</Link>
           </ul>
         </nav>
 
         <div style={{display:"flex"}}>
-          <Sidebar style={{ height: "100%" }} isOpen={isOpen} />
+          <Sidebar isOpen={isOpen} />
           <Outlet />
         </div>
       </div>

@@ -1,9 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit"
+import { userApi } from "./features/user/registerSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    [userApi.reducerPath]:userApi.reducer
+  },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat()
+    getDefaultMiddleware().concat(userApi.middleware)
 });
 
 
