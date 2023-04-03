@@ -6,9 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAddUserMutation, useLoginUserMutation } from '../../redux/features/user/registerSlice';
 import { toast } from 'react-hot-toast';
 import LazyLoader from '../../components/Dashboard/LazyLoader';
+import { useNavigate } from 'react-router-dom';
+import { setToken, setUserDetails } from '../../helper/sessionHelper';
 
 const Login = () => {
   const [loginUser, { error, isLoading, isSuccess, data }] = useLoginUserMutation()
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -22,7 +26,6 @@ const Login = () => {
     password:data.password,
     }
     loginUser(user)
-    
   };
   useEffect(() => {
     if (error) {
@@ -31,8 +34,11 @@ const Login = () => {
     }
     if (isSuccess) {
       toast.success("Login Success");
+      navigate("/")
+      console.log(data);
+      setToken(data.token)
+      setUserDetails(data.user)
     }
-    localStorage.setItem("user", JSON.stringify(data))
   },[error, isSuccess, isLoading])
   
   
@@ -72,9 +78,6 @@ const Login = () => {
                 </p>
               )}
             </div>
-
-           
-          
           {/* Password */}
           
             <div>
@@ -98,8 +101,6 @@ const Login = () => {
                 </p>
               )}
             </div>
-          
-          
           <input className="submit-btn" type="submit" />
         </form>
       </div>

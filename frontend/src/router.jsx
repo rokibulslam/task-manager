@@ -5,6 +5,7 @@ import Dashboard from "./Layout/Layout";
 import LazyLoader from "./components/Dashboard/LazyLoader";
 import Login from "./pages/Login/Login"
 import Register from "./pages/Register/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 const DashboardHome = lazy(() => import("./components/DashboardHome.jsx/DashboardHome"));
@@ -14,7 +15,11 @@ const CreatePage = lazy(() => import("./pages/Create.Page"))
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/",

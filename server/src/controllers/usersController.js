@@ -35,14 +35,17 @@ exports.registration = asyncHandler(async (req, res) => {
 exports.login= asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await UsersModel.findOne({ email });
+  console.log(user);
   if (user && (await user.comparePassword(password))) {
     res.status(201).json({
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      photo: user.photo,
       token: generateToken(user._id),
+      user: {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        photo: user.photo,
+      },
     });
   } else {
     res.status(400);
