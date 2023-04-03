@@ -1,24 +1,24 @@
 import { getBase64 } from '../../helper/FormHelper';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from "react-hook-form";
 import './login.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useAddUserMutation } from '../../redux/features/user/registerSlice';
 import { toast } from 'react-hot-toast';
+import LazyLoader from '../../components/Dashboard/LazyLoader';
 
 const Login = () => {
   const [imgSize, setImgSize] = useState(true)
   const [pasError, setPassError] = useState("");
   const MAX_FILE_SIZE = 1 * 1024 * 1024;
-  const [registerUser, { isError, error, isLoading, isSuccess }] = useAddUserMutation()
-  console.log(error?.data?.message);
+  const [registerUser, { error, isLoading, isSuccess }] = useAddUserMutation()
   const {
     register,
     handleSubmit,control,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
+  const onSubmit =async (data) => {
     if (data.password !== data.confirmPass) {
       setPassError("Password dose not match");
       return;
@@ -27,7 +27,7 @@ const Login = () => {
       setImgSize(false);
       return
     }
-    console.log(data);
+    
     const photo =await getBase64(data.myFile)
   
     const user = {
@@ -39,21 +39,26 @@ const Login = () => {
     photo:photo
     }
     registerUser(user)
-    if (isError) {
-      toast.error(`${error?.data?.message}`);
-      setImgSize(true)
-      setPassError('')
+    
+  };
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+      toast.error(`${error}`);
+      setImgSize(true);
+      setPassError("");
     }
     if (isSuccess) {
       toast.error("Register Success");
       setImgSize(true);
       setPassError("");
     }
-  };
-  console.log(errors)
+  },[error, isSuccess, isLoading])
+  
   
   return (
     <div className="min-h-screen flex justify-center items-center ">
+      {isLoading && <LazyLoader />}
       <div className="login-form">
         <h1 className="text-center font-bold text-3xl text-gray-600">
           Registration Form

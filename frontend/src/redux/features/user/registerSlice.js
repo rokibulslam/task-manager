@@ -6,15 +6,17 @@ export const userApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl:"http://localhost:5000/api/v1"
     }),
-    tagTypes: ["login"],
+
     endpoints: (builder) => ({
         addUser: builder.mutation({
             query: (data) => ({
                 url: "/registration",
                 method: "POST",
                 body:data
-            })
+            }),
+
         })
+        
     })
 })
 
