@@ -31,8 +31,6 @@ exports.registration = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 // Login
 exports.login= asyncHandler(async (req, res) => {
   const { email, password } = req.body;

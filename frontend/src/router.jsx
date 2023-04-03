@@ -4,9 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./Layout/Layout";
 import LazyLoader from "./components/Dashboard/LazyLoader";
 import Login from "./pages/Login/Login"
-
-
-
+import Register from "./pages/Register/Register";
 
 
 const DashboardHome = lazy(() => import("./components/DashboardHome.jsx/DashboardHome"));
@@ -38,8 +36,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element:<Login />
-  }
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
 ]);
 
 

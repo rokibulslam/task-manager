@@ -44,8 +44,4 @@ app.get("/", (req, res) => {
 // Routing Implement
 app.use("/api/v1", router);
 
-app.use(notFound)
-app.use(errorHandler)
-
-
 module.exports = app;
