@@ -8,7 +8,8 @@ exports.ProductList = async (req, res) => {
        let skipRow = (pageNo - 1) * perPage;
        let Rows;
        let Total;
-       console.log(searchValue === "0");
+       console.log(1)
+       console.log(pageNo, perPage, searchValue)
        if (searchValue !== "0") {
          console.log(searchValue);
          let searchRegex = { $regex: searchValue, $options: "i" };

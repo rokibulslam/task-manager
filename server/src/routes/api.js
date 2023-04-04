@@ -24,7 +24,7 @@ router.get("/listTaskByStatus/:status", protect, listTaskByStatus);
 router.get("/taskStatusCount", protect, taskStatusCount);
 router.get("/deleteTask/:id", protect, deleteTask)
 
-router.get('/productList/:pageNo/:perPage/:searchKey?', ProductList)
+router.get('/productList/:pageNo/:perPage/:searchKey', ProductList)
 
 module.exports = router;
 
