@@ -11,6 +11,7 @@ exports.createTask = asyncHandler(async (req, res) => {
     } else {
         res.status(400).json("Failed")
         throw new Error("Task creation failed")
+        // Noth
     }
 })
 
