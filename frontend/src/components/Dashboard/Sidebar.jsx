@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import {
   FaTh,
@@ -17,22 +18,22 @@ const Sidebar = ({isOpen}) => {
         {
             path:"/",
             name:"Dashboard",
-            icon:<FaTh/>
+            icon:<FaTh />
         },
         {
-            path:"/createTask",
-            name:"Create Task",
-            icon:<FaUserAlt/>
+            path:"/products",
+            name:"Products",
+            icon:<FaUserAlt />
         },
         {
             path:"/analytics",
             name:"Analytics",
-            icon:<FaRegChartBar/>
+            icon:<FaRegChartBar />
         },
         {
             path:"/comment",
             name:"Comment",
-            icon:<FaCommentAlt/>
+            icon:<FaCommentAlt />
         },
         {
             path:"/product",
@@ -51,7 +52,6 @@ const Sidebar = ({isOpen}) => {
           <NavLink
             to={item.path}
             key={index}
-            activeclassName="active"
             className="link"
             style={({ isActive }) => {
               return {

@@ -4,14 +4,11 @@ import { userApi } from "./features/user/registerSlice";
 
 const store = configureStore({
   reducer: {
+    [productApi.reducerPath]: productApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
-    [productApi.reducerPath]:productApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(userApi.middleware)
-      .concat(productApi.middleware)
+    getDefaultMiddleware().concat([userApi.middleware, productApi.middleware]),
 });
-
 
 export default store;

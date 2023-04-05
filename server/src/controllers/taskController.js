@@ -20,7 +20,7 @@ exports.deleteTask = asyncHandler(async (req, res) => {
     const query={_id:id}
     const result =await Task.remove(query);
     if (result) {
-        es.status(200).json({ status: "success", data: result });
+        res.status(200).json({ status: "success", data: result });
     } else {
         throw new Error('Remove failed')
     }

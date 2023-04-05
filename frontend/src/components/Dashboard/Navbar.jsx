@@ -14,7 +14,7 @@ const Navbar = ({ toggle, isOpen }) => {
       <div>
         <nav className="nav">
           <ul className="nav-title">
-            <li>Task</li>
+            <li>Inventory</li>
             <li>
               <GiHamburgerMenu onClick={toggle} />
             </li>

@@ -7,11 +7,13 @@
 }
 .link{
     display: flex;
+    align-items: center;
     color: #fff;
     padding: 10px 15px;
     gap: 15px;
     transition: all 0.5s;
     font-size: 15px;
+    text-decoration: none !important
 }
 .link:hover{
     /* background:lightskyblue; */

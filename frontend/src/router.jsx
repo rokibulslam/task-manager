@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/createTask",
+        path: "/products",
         element: (
           <Suspense fallback={<LazyLoader />}>
             <CreatePage />
